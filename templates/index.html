@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investor ScamShield | Check Before You Transfer Money</title>
+  <meta name="description" content="Public-good investor-protection tool helping first-time and emerging investors identify warning signs in suspicious financial messages before transferring money.">
+  
+  <!-- Modern Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Kannada:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="/" class="logo" id="header-logo">
+        <span class="logo-badge">🛡️</span>
+        <span>Investor ScamShield</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="#checker" class="nav-link" data-i18n="nav_check">Check Message</a></li>
+          <li><a href="#how-it-works" class="nav-link" data-i18n="nav_how">How It Works</a></li>
+          <li><a href="/safety" class="nav-link" data-i18n="nav_safety">Safety Tips</a></li>
+          <li><a href="/about" class="nav-link" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Language Switcher: English | ಕನ್ನಡ -->
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="lang-switcher" aria-label="Language selector">
+          <button id="lang-btn-en" class="lang-btn active" type="button">English</button>
+          <button id="lang-btn-kn" class="lang-btn" type="button">ಕನ್ನಡ</button>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-pill">
+        <span>🛡️</span>
+        <span data-i18n="hero_pill">Track A: Digital Fraud & Scam Resilience</span>
+      </div>
+
+      <h1 class="hero-title" data-i18n="hero_title">Check before you transfer money.</h1>
+
+      <p class="hero-subtitle" data-i18n="hero_subtitle">
+        Received a suspicious investment message? Analyze the warning signs before clicking a link, joining a group, or transferring money.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#checker" class="btn btn-primary" id="hero-check-link">
+          <span data-i18n="hero_check_btn">🔍 Check a Message</span>
+        </a>
+        <button type="button" class="btn btn-secondary" id="hero-upload-shortcut" onclick="document.getElementById('tab-btn-screenshot').click(); document.getElementById('checker').scrollIntoView({behavior: 'smooth'});">
+          <span data-i18n="hero_upload_btn">📷 Upload Screenshot</span>
+        </button>
+        <button type="button" class="btn btn-demo" id="demo-hero-btn">
+          <span data-i18n="hero_demo_btn">⚡ Try Judge Demo</span>
+        </button>
+      </div>
+
+      <div class="trust-badges">
+        <div class="trust-item">
+          <span>🛡️</span>
+          <span data-i18n="trust_safety">Safety First</span>
+        </div>
+        <div class="trust-item">
+          <span>🔒</span>
+          <span data-i18n="trust_privacy">Privacy First</span>
+        </div>
+        <div class="trust-item">
+          <span>🌐</span>
+          <span data-i18n="trust_bilingual">English + Kannada</span>
+        </div>
+      </div>
+
+      <div>
+        <span class="prohibition-notice" data-i18n="prohibition_notice">
+          No stock tips. No buy/sell signals. Investor protection only.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Checker Section -->
+  <section class="section" id="checker">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="checker_title">Analyze Suspicious Financial Message</h2>
+        <p class="section-subtitle">
+          Paste text or upload a screenshot from WhatsApp, Telegram, Instagram, YouTube, or SMS to inspect warning signs.
+        </p>
+      </div>
+
+      <div class="checker-grid">
+        <div class="card">
+          <!-- Mode Tabs -->
+          <div class="checker-tabs" role="tablist">
+            <button class="checker-tab-btn active" id="tab-btn-text" role="tab" type="button">
+              <span data-i18n="tab_text">📝 Paste Message</span>
+            </button>
+            <button class="checker-tab-btn" id="tab-btn-screenshot" role="tab" type="button">
+              <span data-i18n="tab_screenshot">📷 Upload Screenshot</span>
+            </button>
+          </div>
+
+          <!-- Quick Test Scenarios Bar for Judges & Users -->
+          <div class="scenario-selector-bar">
+            <span class="scenario-label" data-i18n="scenario_label">Quick Test Scenarios:</span>
+            <select id="scenario-select" class="scenario-select" aria-label="Select test scenario">
+              <option value="" data-i18n="select_scenario">-- Select a test scenario --</option>
+            </select>
+          </div>
+
+          <!-- Text Input Pane -->
+          <div id="text-input-pane">
+            <div class="textarea-wrapper">
+              <textarea 
+                id="message-textarea" 
+                class="message-textarea" 
+                rows="7"
+                placeholder="Paste the WhatsApp / Telegram / SMS / social-media message here...&#10;&#10;Example: 'Guaranteed 40% profit in 7 days! Send money to UPI immediately.'"
+                aria-label="Message to analyze"></textarea>
+              <span class="textarea-char-count"><span id="char-count">0</span> characters</span>
+            </div>
+
+            <div class="form-actions">
+              <button id="analyze-btn" class="btn btn-primary" type="button">
+                <span data-i18n="btn_analyze">🔍 Analyze Message</span>
+              </button>
+              <button id="clear-btn" class="btn btn-secondary" type="button">
+                <span data-i18n="btn_clear">Clear</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screenshot Upload Pane -->
+          <div id="screenshot-pane" style="display: none;">
+            <div class="upload-dropzone" id="upload-dropzone">
+              <span class="dropzone-icon">📷</span>
+              <div class="dropzone-title" data-i18n="dropzone_title">Drop screenshot here or click to browse</div>
+              <div class="dropzone-desc" data-i18n="dropzone_desc">
+                Supports PNG, JPG, JPEG, WEBP (Max 8 MB). Processed in-memory, never permanently stored.
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm" data-i18n="dropzone_btn">Select Screenshot</button>
+              <input type="file" id="screenshot-file-input" class="dropzone-hidden-input" accept="image/png, image/jpeg, image/jpg, image/webp">
+            </div>
+
+            <!-- Image Preview Box -->
+            <div id="preview-container" class="preview-container">
+              <button id="remove-preview-btn" class="preview-remove-btn" type="button">✕ Remove</button>
+              <img id="preview-image" class="preview-image" alt="Uploaded screenshot preview">
+            </div>
+
+            <!-- Sample Screenshot Tray for 1-Click Judge Demo -->
+            <div class="sample-screenshot-tray">
+              <div>
+                <strong data-i18n="sample_tray_label">Try with a realistic scam screenshot:</strong>
+                <div style="font-size: 0.85rem; color: var(--text-muted);">Test the OCR engine without uploading an external file.</div>
+              </div>
+              <button type="button" id="use-sample-btn" class="btn btn-secondary btn-sm" data-i18n="btn_use_sample">
+                🖼️ Load Sample Chat Screenshot
+              </button>
+            </div>
+
+            <div class="form-actions" style="margin-top: 20px;">
+              <button id="run-ocr-btn" class="btn btn-primary" type="button" style="display: none;">
+                <span data-i18n="btn_run_ocr">Extract Text from Screenshot</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Loading Indicator -->
+          <div id="loading-indicator" class="loading-indicator">
+            <div class="spinner"></div>
+            <span id="loading-text" style="font-weight: 600; color: var(--primary-navy);" data-i18n="analyzing_loading">
+              Evaluating warning indicators and links...
+            </span>
+          </div>
+        </div>
+
+        <!-- Dynamic Results Container -->
+        <div id="result-container" class="result-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section section-alt" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="how_title">How Investor ScamShield Works</h2>
+        <p class="section-subtitle" data-i18n="how_subtitle">
+          A 4-step public-good framework designed to empower first-time investors before financial harm occurs.
+        </p>
+      </div>
+
+      <div class="how-grid">
+        <div class="how-card">
+          <span class="how-step-icon">📩</span>
+          <h3 class="how-step-title" data-i18n="how_step1_title">1️⃣ Receive</h3>
+          <p class="how-step-desc" data-i18n="how_step1_desc">
+            You receive an unsolicited investment offer via WhatsApp, Telegram, Instagram, or SMS.
+          </p>
+        </div>
+
+        <div class="how-card">
+          <span class="how-step-icon">📋</span>
+          <h3 class="how-step-title" data-i18n="how_step2_title">2️⃣ Check</h3>
+          <p class="how-step-desc" data-i18n="how_step2_desc">
+            Paste the message text or upload a screenshot to ScamShield without sharing private details.
+          </p>
+        </div>
+
+        <div class="how-card">
+          <span class="how-step-icon">⚙️</span>
+          <h3 class="how-step-title" data-i18n="how_step3_title">3️⃣ Analyze</h3>
+          <p class="how-step-desc" data-i18n="how_step3_desc">
+            Our transparent rule engine identifies warning indicators, suspicious links, and unverified claims.
+          </p>
+        </div>
+
+        <div class="how-card">
+          <span class="how-step-icon">🛡️</span>
+          <h3 class="how-step-title" data-i18n="how_step4_title">4️⃣ Protect</h3>
+          <p class="how-step-desc" data-i18n="how_step4_desc">
+            Review plain-language explanations, official verification links, and safe next steps before acting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy First Section -->
+  <section class="section" id="privacy">
+    <div class="container">
+      <div class="privacy-card">
+        <div class="privacy-header">
+          <span style="font-size: 2.2rem;">🔒</span>
+          <h2 class="privacy-title" data-i18n="privacy_title">Privacy First Architecture</h2>
+        </div>
+
+        <div class="privacy-grid">
+          <div class="privacy-pledge">
+            <span>✓</span> <span data-i18n="privacy_p1">We do not ask for OTPs.</span>
+          </div>
+          <div class="privacy-pledge">
+            <span>✓</span> <span data-i18n="privacy_p2">We do not ask for passwords.</span>
+          </div>
+          <div class="privacy-pledge">
+            <span>✓</span> <span data-i18n="privacy_p3">We do not ask for PINs.</span>
+          </div>
+          <div class="privacy-pledge">
+            <span>✓</span> <span data-i18n="privacy_p4">We do not ask for CVVs.</span>
+          </div>
+          <div class="privacy-pledge">
+            <span>✓</span> <span data-i18n="privacy_p5">We do not ask for banking login credentials.</span>
+          </div>
+          <div class="privacy-pledge">
+            <span>✓</span> <span data-i18n="privacy_p6">We do not ask for investment-account passwords.</span>
+          </div>
+        </div>
+
+        <p class="privacy-note" data-i18n="privacy_note">
+          Privacy Guarantee: Screenshots are processed in temporary memory and immediately deleted. We do not track users, do not use commercial cookies, and do not store message contents.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Official Portals Directory -->
+  <section class="section section-alt" id="portals">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="portals_title">Official Verification Resources</h2>
+        <p class="section-subtitle" data-i18n="portals_subtitle">
+          Always verify investment advisors and deposit schemes through official regulatory directories.
+        </p>
+      </div>
+
+      <div class="portals-grid">
+        <div class="portal-card">
+          <div>
+            <h3 class="portal-title">🏛️ SEBI Registered Intermediaries</h3>
+            <p class="portal-desc">
+              Search the official registry of SEBI-recognized Stock Brokers, Research Analysts, and Registered Investment Advisers (RIAs).
+            </p>
+          </div>
+          <a href="https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&intmId=13" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+            Visit SEBI Directory ↗
+          </a>
+        </div>
+
+        <div class="portal-card">
+          <div>
+            <h3 class="portal-title">🏦 RBI Sachet Portal</h3>
+            <p class="portal-desc">
+              Verify non-banking financial entities registered to accept deposits, and report unauthorized money-collection schemes directly to regulators.
+            </p>
+          </div>
+          <a href="https://sachet.rbi.org.in/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+            Visit RBI Sachet ↗
+          </a>
+        </div>
+
+        <div class="portal-card">
+          <div>
+            <h3 class="portal-title">🚨 National Cyber Crime Reporting</h3>
+            <p class="portal-desc">
+              If financial transfer has already occurred, immediately call <strong>1930</strong> or register a complaint on the official government portal to initiate golden-hour account freeze.
+            </p>
+          </div>
+          <a href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+            Call 1930 / cybercrime.gov.in ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span>🛡️</span>
+            <span>Investor ScamShield</span>
+          </div>
+          <p class="footer-desc">
+            A public-good investor resilience tool built for the SANGYAN Investor Resilience Hackathon.
+            Empowering emerging retail investors to recognize warning signs before transferring funds.
+          </p>
+          <div style="margin-top: 14px; font-size: 0.85rem; color: #64748b;">
+            Track A: Digital Fraud & Scam Resilience
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#checker">Message Checker</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="/safety">Safety Tips</a></li>
+            <li><a href="/about">About & Hackathon Mission</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Regulatory Helpline</h4>
+          <ul class="footer-links">
+            <li><a href="tel:1930">Cyber Crime Helpline: 1930</a></li>
+            <li><a href="https://cybercrime.gov.in" target="_blank" rel="noopener">cybercrime.gov.in</a></li>
+            <li><a href="https://sachet.rbi.org.in" target="_blank" rel="noopener">sachet.rbi.org.in</a></li>
+            <li><a href="https://sebi.gov.in" target="_blank" rel="noopener">sebi.gov.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          Disclaimer: Investor ScamShield provides prototype risk-indicator scores for educational and investor-awareness purposes only.
+          It does not provide investment advice, trading recommendations, or definitive legal determinations of fraud.
+        </p>
+        <p style="margin-top: 6px; color: #475569;">
+          © 2026 Investor ScamShield. Public-Good Infrastructure.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast-msg" class="toast-msg"></div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Investor ScamShield | SANGYAN Hackathon Track A</title>
+  <meta name="description" content="About Investor ScamShield, a public-good investor-protection tool built for the SANGYAN Investor Resilience Hackathon.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Kannada:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .about-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .about-lead {
+      font-size: 1.25rem;
+      color: var(--primary-navy);
+      font-weight: 700;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="/" class="logo">
+        <span class="logo-badge">🛡️</span>
+        <span>Investor ScamShield</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/#checker" class="nav-link">Check Message</a></li>
+          <li><a href="/#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="/safety" class="nav-link">Safety Tips</a></li>
+          <li><a href="/about" class="nav-link active">About</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="/#checker" class="btn btn-primary btn-sm">🔍 Check a Message</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="hero" style="padding: 44px 0 36px;">
+    <div class="container">
+      <div class="hero-pill" style="background-color: #eff6ff; border-color: #bfdbfe; color: #1e40af;">
+        <span>🏛️</span>
+        <span>Public-Good Initiative</span>
+      </div>
+      <h1 class="hero-title">About Investor ScamShield</h1>
+      <p class="hero-subtitle">
+        Empowering emerging digital investors with explainable warning sign detection before they transfer money.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <main class="section">
+    <div class="container" style="max-width: 900px;">
+
+      <article class="about-card">
+        <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 16px;">
+          Mission & Problem Statement
+        </h2>
+        <p class="about-lead">
+          “Investor ScamShield is a prototype designed to help users recognize common warning signs in digital financial scams before transferring money.”
+        </p>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">
+          Across India, tens of millions of first-time and emerging investors from Tier-2 and Tier-3 cities are opening Demat and trading accounts via mobile smartphones. While digital connectivity enables financial inclusion, it has also unleashed an unprecedented epidemic of organized digital scams operating over WhatsApp groups, Telegram channels, Instagram influencers, and SMS.
+        </p>
+        <p style="color: var(--text-secondary); line-height: 1.7;">
+          Victims often lack formal financial literacy and are targeted through sophisticated psychological levers: guaranteed return promises, artificial time urgency, fabricated SEBI licenses, and social proof in manipulated chat groups. Investor ScamShield acts as an objective, cognitive safety brake right when the user receives a suspicious message.
+        </p>
+      </article>
+
+      <article class="about-card">
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 16px;">
+          Hackathon Alignment
+        </h2>
+        <div style="background: #f8fafc; border-left: 4px solid var(--primary-blue); padding: 18px; border-radius: var(--radius-sm); margin-bottom: 20px;">
+          <strong>SANGYAN Investor Resilience Hackathon</strong><br>
+          <span style="color: var(--primary-blue); font-weight: 700;">Track A: Digital Fraud & Scam Resilience</span>
+        </div>
+        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+          ScamShield is engineered specifically under the public-good mandate of Track A. It is purposefully <strong>NOT</strong> a stock-trading platform, fintech-sales funnel, robo-advisor, or brokerage promotional tool. It operates exclusively to safeguard retail savings.
+        </p>
+        <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+          <li>✓ Strict prohibition against stock tips, price predictions, and buy/sell recommendations</li>
+          <li>✓ No affiliate monetization, commercial brokerage partnerships, or hidden advertising</li>
+          <li>✓ Transparent rule-based explainability instead of black-box opaque AI assertions</li>
+          <li>✓ Full English and Kannada bilingual accessibility for non-technical users</li>
+        </ul>
+      </article>
+
+      <article class="about-card">
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 16px;">
+          Core Trust & Uncertainty Rules
+        </h2>
+        <div style="display: flex; flex-direction: column; gap: 14px; color: var(--text-secondary);">
+          <div style="background: var(--bg-elevated); padding: 16px; border-radius: var(--radius-sm);">
+            <strong style="color: var(--primary-navy);">1. Honest Uncertainty Communication</strong><br>
+            We never declare “This person is definitely a scammer” or “This investment is fake.” Instead, the system states: <em>“Warning indicator detected. Suspicious characteristic detected. Independent verification is recommended. These indicators do not by themselves prove fraud.”</em>
+          </div>
+
+          <div style="background: var(--bg-elevated); padding: 16px; border-radius: var(--radius-sm);">
+            <strong style="color: var(--primary-navy);">2. Risk-Indicator Score, Not Scam Probability</strong><br>
+            The score is presented strictly as <em>“90 / 100 Risk Indicators”</em>, accompanied by the notice: <em>“This is a prototype risk-indicator score, not a probability of scam and not investment advice.”</em>
+          </div>
+
+          <div style="background: var(--bg-elevated); padding: 16px; border-radius: var(--radius-sm);">
+            <strong style="color: var(--primary-navy);">3. Privacy by Design</strong><br>
+            We never ask for or store passwords, PINs, OTPs, CVVs, or banking login credentials. Uploaded screenshots are processed in transient RAM and purged immediately.
+          </div>
+        </div>
+      </article>
+
+      <article class="about-card" style="border: 2px solid #e2e8f0; background: #fafafa;">
+        <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 12px;">
+          Official Legal & Public Disclaimer
+        </h2>
+        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+          Investor ScamShield is an educational, prototype investor-protection tool developed for research and demonstration during the SANGYAN Investor Resilience Hackathon. This tool does not provide investment advice, financial planning, legal counsel, or broker-dealer services. The risk score is an indicator, not proof of fraud. Users should independently verify important financial claims using authoritative regulatory sources such as SEBI (sebi.gov.in) and RBI (rbi.org.in).
+        </p>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>Investor ScamShield — Public-Good Investor Protection Infrastructure.</p>
+        <p style="margin-top: 6px;"><a href="/" style="color: #94a3b8;">← Return to Main Application</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

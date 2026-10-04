@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investor Safety Guide | Investor ScamShield</title>
+  <meta name="description" content="Comprehensive investor safety handbook and digital fraud defense guide for first-time and emerging investors.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Kannada:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .safety-guide-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .safety-guide-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .safety-guide-icon {
+      font-size: 2rem;
+      background: var(--primary-blue-subtle);
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-md);
+    }
+    .golden-hour-box {
+      background: #fef2f2;
+      border: 2px solid #f87171;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-top: 36px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="/" class="logo">
+        <span class="logo-badge">🛡️</span>
+        <span>Investor ScamShield</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/#checker" class="nav-link">Check Message</a></li>
+          <li><a href="/#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="/safety" class="nav-link active">Safety Tips</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="/#checker" class="btn btn-primary btn-sm">🔍 Check a Message</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="hero" style="padding: 44px 0 36px;">
+    <div class="container">
+      <div class="hero-pill" style="background-color: #eff6ff; border-color: #bfdbfe; color: #1e40af;">
+        <span>📚</span>
+        <span>Investor Resilience Handbook</span>
+      </div>
+      <h1 class="hero-title">Common Digital Investment Scams & Safety Rules</h1>
+      <p class="hero-subtitle">
+        Understand the deceptive psychology used by digital fraudsters before you commit hard-earned savings.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <main class="section">
+    <div class="container">
+
+      <!-- Golden Hour Action Box -->
+      <div class="golden-hour-box">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <span style="font-size: 2.2rem;">🚨</span>
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: #991b1b;">
+            Already Transferred Money? Act Within the "Golden Hour"
+          </h2>
+        </div>
+        <p style="color: #7f1d1d; margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
+          If you have sent funds to an unknown individual or fraudulent scheme, the first 60–120 minutes are critical to freeze interbank transfers before fraudsters siphon money into cash mules or crypto.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #ffffff; padding: 18px; border-radius: var(--radius-sm); border: 1px solid #fecaca;">
+            <strong style="color: #991b1b; display: block; margin-bottom: 6px;">Step 1: Dial 1930 Immediately</strong>
+            Call the National Cyber Crime Helpline (Ministry of Home Affairs). Provide transaction UTR, date, recipient UPI/bank account, and amount.
+          </div>
+          <div style="background: #ffffff; padding: 18px; border-radius: var(--radius-sm); border: 1px solid #fecaca;">
+            <strong style="color: #991b1b; display: block; margin-bottom: 6px;">Step 2: Alert Your Bank</strong>
+            Call your bank's fraud control unit to lodge a payment dispute and request a stop payment / freeze memo.
+          </div>
+          <div style="background: #ffffff; padding: 18px; border-radius: var(--radius-sm); border: 1px solid #fecaca;">
+            <strong style="color: #991b1b; display: block; margin-bottom: 6px;">Step 3: File Formal Complaint</strong>
+            Submit the official digital cyber complaint at <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" style="color: #dc2626; font-weight: 700;">cybercrime.gov.in</a> and keep the acknowledgment number.
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 48px; margin-bottom: 32px;">
+        <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--primary-navy);">
+          6 Common Scam Archetypes Targeting Emerging Investors
+        </h2>
+      </div>
+
+      <!-- Scam 1 -->
+      <article class="safety-guide-card">
+        <div class="safety-guide-header">
+          <div class="safety-guide-icon">📈</div>
+          <div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--primary-navy);">1. The "Guaranteed Return / Double Money" Scheme</h3>
+            <span style="font-size: 0.85rem; color: #dc2626; font-weight: 700;">HIGH-RISK WARNING SIGN: Assured Daily/Weekly Profit</span>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 12px;">
+          <strong>How it works:</strong> The message promises 30% to 100% returns within days or weeks with "zero risk." Often, fraudsters show fabricated ledger screenshots or even credit a nominal initial amount (₹200 to ₹1,000) to win trust, before encouraging large transfers of ₹50,000 or ₹5,00,000.
+        </p>
+        <p style="color: var(--text-secondary);">
+          <strong>The Golden Truth:</strong> In legitimate financial markets, no instrument—equity, mutual fund, debt, or bond—can lawfully guarantee high fixed returns. High return mathematically implies high market risk.
+        </p>
+      </article>
+
+      <!-- Scam 2 -->
+      <article class="safety-guide-card">
+        <div class="safety-guide-header">
+          <div class="safety-guide-icon">📱</div>
+          <div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--primary-navy);">2. The Telegram / WhatsApp "VIP Stock Tips" Trap</h3>
+            <span style="font-size: 0.85rem; color: #d97706; font-weight: 700;">HIGH-RISK WARNING SIGN: Pump-and-Dump Social Proof</span>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 12px;">
+          <strong>How it works:</strong> Users are added without consent to Telegram channels or WhatsApp communities. Accomplice accounts post constant fake thank-you messages, luxury car photos, and photoshopped Zerodha/Groww P&L screenshots.
+        </p>
+        <p style="color: var(--text-secondary);">
+          <strong>The Golden Truth:</strong> Fraudsters purchase illiquid penny stocks in advance, urge group members to buy at inflated prices, and then dump their holdings, causing the stock to crash and leaving retail investors with total losses.
+        </p>
+      </article>
+
+      <!-- Scam 3 -->
+      <article class="safety-guide-card">
+        <div class="safety-guide-header">
+          <div class="safety-guide-icon">🏛️</div>
+          <div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--primary-navy);">3. The Counterfeit SEBI / RBI Certificate Scam</h3>
+            <span style="font-size: 0.85rem; color: #2563eb; font-weight: 700;">HIGH-RISK WARNING SIGN: Unverified Regulatory Credentials</span>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 12px;">
+          <strong>How it works:</strong> Scammers send high-resolution images of "SEBI Registration Certificates" or "RBI Approvals" bearing official emblems, fake registration numbers (e.g. INH00000XXXX), and forged signatures.
+        </p>
+        <p style="color: var(--text-secondary);">
+          <strong>The Golden Truth:</strong> Never rely on image documents or registration numbers sent directly by the party. Always independently search the registered entity on <a href="https://www.sebi.gov.in" target="_blank" rel="noopener" style="color: #1d4ed8; font-weight: 600;">sebi.gov.in</a> and cross-verify the official listed telephone number and email domain.
+        </p>
+      </article>
+
+      <!-- Scam 4 -->
+      <article class="safety-guide-card">
+        <div class="safety-guide-header">
+          <div class="safety-guide-icon">💻</div>
+          <div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--primary-navy);">4. Remote Access Installation (AnyDesk / TeamViewer)</h3>
+            <span style="font-size: 0.85rem; color: #dc2626; font-weight: 700;">CRITICAL DANGER: Total Device Takeover</span>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 12px;">
+          <strong>How it works:</strong> The caller or chatter claims to assist you in "opening a VIP institutional trading account" or "resolving KYC verification" and asks you to install AnyDesk, TeamViewer, or QuickSupport and read out a 9-digit session code.
+        </p>
+        <p style="color: var(--text-secondary);">
+          <strong>The Golden Truth:</strong> Sharing that code grants full remote control of your phone or laptop. Scammers can see your screen, observe you entering banking passwords, and silently intercept SMS OTPs.
+        </p>
+      </article>
+
+      <!-- Scam 5 -->
+      <article class="safety-guide-card">
+        <div class="safety-guide-header">
+          <div class="safety-guide-icon">🎬</div>
+          <div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--primary-navy);">5. Part-Time Job / Video Like / Review Rating Trap</h3>
+            <span style="font-size: 0.85rem; color: #d97706; font-weight: 700;">HIGH-RISK WARNING SIGN: Task Scam Escalation</span>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 12px;">
+          <strong>How it works:</strong> Initiated via SMS/WhatsApp offering ₹50 per YouTube like or Google review. After paying ₹200–₹500 for initial tasks, the operator redirects the victim to a "prepaid cryptocurrency/investment task" where you must deposit ₹10,000 to "unlock" ₹15,000 earnings.
+        </p>
+        <p style="color: var(--text-secondary);">
+          <strong>The Golden Truth:</strong> The victim is never allowed to withdraw their deposit; additional "tax fees" and "clearance fees" are continually demanded until the victim realizes the deception.
+        </p>
+      </article>
+
+      <!-- Scam 6 -->
+      <article class="safety-guide-card">
+        <div class="safety-guide-header">
+          <div class="safety-guide-icon">⚖️</div>
+          <div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--primary-navy);">6. "Digital Arrest" & Fake Law Enforcement Coercion</h3>
+            <span style="font-size: 0.85rem; color: #dc2626; font-weight: 700;">CRITICAL DANGER: Intimidation & Video Call Isolation</span>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 12px;">
+          <strong>How it works:</strong> Scammers pose as Mumbai Police, CBI, or Customs officers over Skype/WhatsApp video calls wearing uniforms. They claim your Aadhaar or bank account was implicated in money laundering and instruct you to transfer funds to a "Supreme Court verification account."
+        </p>
+        <p style="color: var(--text-secondary);">
+          <strong>The Golden Truth:</strong> There is legally NO such procedure as a "digital arrest" under Indian law. Indian police and judicial agencies never demand fund transfers for verification over video calls.
+        </p>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>Investor ScamShield — SANGYAN Investor Resilience Hackathon: Track A.</p>
+        <p style="margin-top: 6px;"><a href="/" style="color: #94a3b8;">← Return to Main Application</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
