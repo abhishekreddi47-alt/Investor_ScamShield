@@ -28,6 +28,54 @@ app = Flask(
     static_url_path='/static'
 )
 
+
+class VercelPathMiddleware:
+    """
+    WSGI Middleware to normalize PATH_INFO for Vercel Serverless Function deployments.
+    When Vercel rewrites requests to /api/index.py (or /api/index), PATH_INFO can be set
+    to the serverless function destination instead of the client's original request URI.
+    This middleware restores the original request path from Vercel's edge headers so that
+    Flask routes (/, /checker, /how-it-works, /safety, /about, /api/analyze, /static/...) match correctly.
+    """
+    def __init__(self, wsgi_app):
+        self.wsgi_app = wsgi_app
+
+    def __call__(self, environ, start_response):
+        raw_path = environ.get('PATH_INFO', '')
+
+        # Check Vercel edge headers for original incoming request path
+        original_path = (
+            environ.get('HTTP_X_MATCHED_PATH') or
+            environ.get('HTTP_X_VERCEL_MATCHED_PATH') or
+            environ.get('HTTP_X_FORWARDED_URI') or
+            environ.get('HTTP_X_ORIGINAL_URL') or
+            environ.get('RAW_URI')
+        )
+
+        if original_path:
+            # Strip query string if present
+            resolved_path = original_path.split('?')[0]
+            # If the header points to something other than the entrypoint itself, use it
+            if resolved_path not in ('/api/index', '/api/index.py', '/api', '/api/'):
+                environ['PATH_INFO'] = resolved_path
+            else:
+                environ['PATH_INFO'] = '/'
+        else:
+            # If no edge header was present, but PATH_INFO is the entrypoint itself,
+            # this request was rewritten from the root URL.
+            if raw_path in ('/api/index.py', '/api/index', '/api', '/api/'):
+                environ['PATH_INFO'] = '/'
+            elif raw_path.startswith('/api/index.py/'):
+                environ['PATH_INFO'] = raw_path[len('/api/index.py'):]
+            elif raw_path.startswith('/api/index/'):
+                environ['PATH_INFO'] = raw_path[len('/api/index'):]
+
+        return self.wsgi_app(environ, start_response)
+
+
+# Wrap Flask's WSGI application with the Vercel path normalizer
+app.wsgi_app = VercelPathMiddleware(app.wsgi_app)
+
 # Security & Upload Configuration
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'investor-scamshield-hackathon-2026')
 app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024  # 8 Megabytes maximum
@@ -154,6 +202,11 @@ DEMO_SCENARIOS = [
 
 
 @app.route('/')
+@app.route('/index')
+@app.route('/api')
+@app.route('/api/')
+@app.route('/api/index')
+@app.route('/api/index.py')
 def home():
     """Renders the main Investor ScamShield interactive application."""
     ocr_ready = is_ocr_available()
@@ -335,6 +388,11 @@ def process_ocr():
 @app.errorhandler(404)
 def not_found(error):
     """Graceful 404 handler for API and direct page requests."""
+    # If Vercel routed root/index to an entrypoint path that wasn't matched
+    if request.path in ('/api', '/api/', '/api/index', '/api/index.py'):
+        return render_template('index.html', ocr_ready=is_ocr_available())
+
+    # Return JSON error for missing API routes
     if request.path.startswith('/api/'):
         return jsonify({
             "status": "error",

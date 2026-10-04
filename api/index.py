@@ -13,5 +13,7 @@ if ROOT_DIR not in sys.path:
 
 from app import app  # noqa: E402
 
-# Export WSGI application instance for Vercel
-__all__ = ['app']
+# Standard WSGI entrypoints for Vercel Python runtime
+application = app
+
+__all__ = ['app', 'application']
